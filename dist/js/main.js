@@ -20,7 +20,21 @@ myApp.controller('HeaderCtrl', ['$rootScope', '$scope', '$modal', function($root
 
     $scope.showModalLogin = showModalLogin;
 }]);
-myApp.controller('LoginCtrl', ['$rootScope', '$scope', function($rootScope, $scope) {
+myApp.controller('LoginCtrl', ['$rootScope', '$scope', '$location', function($rootScope, $scope, $location) {
+    var userName = "test@abc.com";
+    var password = "123";
+    var options = {};
+    options.user = {
+        email:'',
+        password:''
+    }; // Angular supported this function to get value of input
+
+    function login() {
+        if (options.user.email === userName && options.user.password === password) {
+        $rootScope.hideModal();
+        $location.path('/');
+        }
+    }
 
 }]);
 
